@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+
+    <link rel="stylesheet" href="./assets/css/admin_khachhang.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="wrapper-left">
+            <div class="avatar">
+                <div class="circle"><i class="fa-solid fa-user"></i></div>
+                <p>Admin</p>
+            </div>
+            <nav class="sidebar-nav">
+                    <ul class="list-nav">
+                        <li>
+                            <a href="admin_nhanvien.html" class="nav-link">
+                                <span class="nav-label">Nhân viên</span>
+                            </a> 
+                        </li>  
+                        <li>
+                            <a href="admin_khachhang.html" class="nav-link">
+                                <span class="nav-label">Khách hàng</span>
+                            </a> 
+                        </li> 
+                        <li>
+                            <a href="admin_nhatky.html" class="nav-link">
+                                <span class="nav-label">Nhật ký hoạt động</span>
+                            </a> 
+                        </li> 
+                        <li>
+                            <a href="#logoutBox" class="nav-link" id="logout-link">
+                            <span class="nav-label">Đăng xuất</span>
+                            </a> 
+                        </li>
+                    </ul>
+                </nav>
+
+        </div>
+    
+        <div class="wrapper-right">
+            <div class="top">
+                <div class="search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Tìm kiếm" maxlength="100">
+                </div>
+            </div>
+
+
+            <!-- Danh sách nhân viên  -->
+            <div class="content">
+                <p>Danh sách khách hàng</p>
+            </div>
+            <table >
+                <thead class="customer-table">
+                    <tr>
+                        <th style="width: 40%;">Tên</th>
+                        <th style="width: 40%;">Trạng thái</th>
+                        <th style="width: 20%;">Chỉnh sửa</th>
+                    </tr>
+                </thead>
+                <tbody id="customerList" class="customer-list">
+                    <tr>
+                        <td><span class="cus-name">Nguyễn Văn A</span></td>
+                        <td>Đang hoạt động</td>
+                        <td>
+                            <button class="edit-btn" onclick="openEditFormCus()">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="cus-name">Nguyễn Văn A</span></td>
+                        <td>Đang hoạt động</td>
+                        <td>
+                            <button class="edit-btn" onclick="openEditFormCus()">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="cus-name">Nguyễn Văn A</span></td>
+                        <td>Đang hoạt động</td>
+                        <td>
+                            <button class="edit-btn" onclick="openEditFormCus()">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+            <!-- Box chỉnh sửa hợp đồng khách hàng  -->
+            <div id="editCustomerBox" class="edit-customer-box" style="display: none;">
+                <div class="form-edit-customer">
+                    <p>Thông tin hợp đồng</p>
+                    <input type="text" placeholder="Mã hợp đồng" required>
+                    <input type="text" placeholder="Họ và tên" required>
+                    <select required>
+                        <option value="">Loại bảo hiểm</option>
+                        <option value="">Bảo hiểm tai nạn</option>
+                        <option value="">Bảo hiểm xã hội</option>
+                        <option value="">Bảo hiểm y tế</option>
+                        <option value="">Bảo hiểm nhân thọ</option>
+                    </select>
+                    <input type="text" placeholder="Ngày bắt đầu / kết thúc" required>
+                    <input type="text" placeholder="Người lập hợp đồng" required>
+                    <input type="text" placeholder="Tổng phí bảo hiểm" required>
+                    <input type="text" placeholder="Số điện thoại" required>
+                    <select required>
+                        <option value="">Trạng thái</option>
+                        <option value="">Đang hoạt động</option>
+                        <option value="">Đã khóa</option>
+                    </select>
+                    <input type="text" placeholder="Kế toán thu phí" required>
+                    <div class="form-buttons">
+                        <button type="submit">Cập nhật</button>
+                        <button type="button" onclick="closeEditFormCus()">Hủy</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Box xem chi tiết thông tin khách hàng  -->
+            <div id="detailCustomerBox" class="detail-customer-box" style="display: none;">
+                <div class="form-detail-cus">
+                    <p>Thông tin khách hàng</p>
+                    <div class="inf">
+                        <p>ID: </p>
+                        <p>Họ và tên: </p>
+                        <p>Ngày sinh: </p>
+                        <p>Giới tính: </p>
+                        <p>Địa chỉ thường trú: </p>
+                        <p>Nơi công tác: </p>
+                        <p>Số điện thoại: </p>
+                        <p>Trạng thái: </p>
+                        <p>Tiền sử bệnh (nếu có): </p>
+                    </div>
+                    <div>
+                        <button type="button" onclick="closeDetailCustomer()">Đóng</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Box xác nhận đăng xuất -->
+        <div id="logoutBox" class="logout" style="display: none;">
+            <div class="logout-content">
+                <p>Bạn có chắc muốn đăng xuất không?</p>
+                <button onclick="logout()">Có</button>
+                <button onclick="closeLogoutBox()">Không</button>
+            </div>
+        </div>
+
+    </div>
+    <script src="./assets/js/admin_add.js"></script>
+    <script src="./assets/js/dangxuat.js"></script>
+</body>
+</html> 

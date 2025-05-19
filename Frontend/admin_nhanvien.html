@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+
+    <link rel="stylesheet" href="./assets/css/admin_nhanvien.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="wrapper-left">
+            <div class="avatar">
+                <div class="circle"><i class="fa-solid fa-user"></i></div>
+                <p>Admin</p>
+            </div>
+            <nav class="sidebar-nav">
+                    <ul class="list-nav">
+                        <li>
+                            <a href="admin_nhanvien.html" class="nav-link">
+                                <span class="nav-label">Nhân viên</span>
+                            </a> 
+                        </li>  
+                        <li>
+                            <a href="admin_khachhang.html" class="nav-link">
+                                <span class="nav-label">Khách hàng</span>
+                            </a> 
+                        </li> 
+                        <li>
+                            <a href="admin_nhatky.html" class="nav-link">
+                                <span class="nav-label">Nhật ký hoạt động</span>
+                            </a> 
+                        </li> 
+                        <li>
+                            <a href="#logoutBox" class="nav-link" id="logout-link">
+                            <span class="nav-label">Đăng xuất</span>
+                            </a> 
+                        </li>
+                    </ul>
+                </nav>
+
+        </div>
+    
+        <div class="wrapper-right">
+            <div class="top">
+                <div class="search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Tìm kiếm" maxlength="100">
+                </div>
+            </div>
+
+            <!-- Danh sách nhân viên  -->
+            <div class="content">
+                <p>Danh sách nhân viên</p>
+            </div>
+            <table >
+                <thead class="employee-table">
+                    <tr>
+                        <th style="width: 30%;">Tên</th>
+                        <th style="width: 30%;">Chức vụ</th>
+                        <th style="width: 25%;">Trạng thái</th>
+                        <th style="width: 15%;">Chỉnh sửa</th>
+                    </tr>
+                </thead>
+                <tbody id="employeeList" class="employee-list">
+                    <tr>
+                        <td>Nguyễn Văn A</td>
+                        <td>Kế toán</td>
+                        <td>Đang hoạt động</td>
+                        <td>
+                            <button class="edit-btn" onclick="openEditForm()">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Nguyễn Văn A</td>
+                        <td>Kế toán</td>
+                        <td>Đang hoạt động</td>
+                        <td>
+                            <button class="edit-btn" onclick="openEditForm()">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Nguyễn Văn A</td>
+                        <td>Kế toán</td>
+                        <td>Đang hoạt động</td>
+                        <td>
+                            <button class="edit-btn" onclick="openEditForm()">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Box chỉnh sửa nhân viên -->
+            <div id="editEmployeeBox" class="add-employee-box" style="display: none;">
+                <div class="form-add-employee">
+                    <p>Chỉnh sửa thông tin</p>
+                    <input type="text" placeholder="ID" required>
+                    <input type="text" placeholder="Mật khẩu" required>
+                    <input type="text" placeholder="Họ và tên" required>
+                    <input type="text" placeholder="Ngày sinh" required>
+                    <input type="text" placeholder="Giới tính" required>
+                    <input type="text" placeholder="Email" required>
+                    <input type="text" placeholder="Số điện thoại" required>                        <input type="text" placeholder="Địa chỉ" required>
+                    <select required>
+                        <option value="">Vai trò</option>
+                        <option value="">Admin</option>
+                        <option value="">Kế toán</option>
+                        <option value="">Người lập hợp đồng</option>
+                        <option value="">Giám sát</option>
+                    </select>
+                    <select required>
+                        <option value="">Loại bảo hiểm</option>
+                        <option value="">Bảo hiểm tai nạn</option>
+                        <option value="">Bảo hiểm xã hội</option>
+                        <option value="">Bảo hiểm y tế</option>
+                        <option value="">Bảo hiểm nhân thọ</option>
+                    </select>
+                    <select required>
+                        <option value="">Trạng thái</option>
+                        <option value="">Đang hoạt động</option>
+                        <option value="">Đã khóa</option>
+                    </select>
+                    <div class="form-buttons">
+                        <button type="submit">Cập nhật</button>
+                        <button type="button" onclick="closeEditForm()">Hủy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Box thêm mới nhân viên -->
+            <div class="add">
+                <button onclick="openAddForm()">Thêm</button>
+            </div>
+            <div id="addEmployeeBox" class="add-employee-box" style="display: none;">
+                <div class="form-add-employee">
+                    <p>Thêm nhân viên mới</p>
+                    <input type="text" placeholder="ID" required>
+                    <input type="text" placeholder="Mật khẩu" required>
+                    <input type="text" placeholder="Họ và tên" required>
+                    <input type="text" placeholder="Ngày sinh" required>
+                    <input type="text" placeholder="Giới tính" required>
+                    <input type="text" placeholder="Email" required>
+                    <input type="text" placeholder="Số điện thoại" required>                        <input type="text" placeholder="Địa chỉ" required>
+                    <select required>
+                        <option value="">Vai trò</option>
+                        <option value="">Admin</option>
+                        <option value="">Kế toán</option>
+                        <option value="">Người lập hợp đồng</option>
+                        <option value="">Giám sát</option>
+                    </select>
+                    <select required>
+                        <option value="">Loại bảo hiểm</option>
+                        <option value="">Bảo hiểm tai nạn</option>
+                        <option value="">Bảo hiểm xã hội</option>
+                        <option value="">Bảo hiểm y tế</option>
+                        <option value="">Bảo hiểm nhân thọ</option>
+                    </select>
+                    <select required>
+                        <option value="">Trạng thái</option>
+                        <option value="">Đang hoạt động</option>
+                        <option value="">Đã khóa</option>
+                    </select>
+                    <div class="form-buttons">
+                        <button type="submit">Thêm</button>
+                        <button type="button" onclick="closeAddForm()">Hủy</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- Box xác nhận đăng xuất -->
+        <div id="logoutBox" class="logout" style="display: none;">
+            <div class="logout-content">
+                <p>Bạn có chắc muốn đăng xuất không?</p>
+                <button onclick="logout()">Có</button>
+                <button onclick="closeLogoutBox()">Không</button>
+            </div>
+        </div>
+
+    </div>
+    <script src="./assets/js/admin_add.js"></script>
+    <script src="./assets/js/dangxuat.js"></script>
+    
+</body>
+</html> 

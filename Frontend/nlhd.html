@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NLHD</title>
+
+    <link rel="stylesheet" href="./assets/css/nlhd.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="wrapper-left">
+            <div class="avatar">
+                <div class="circle"><i class="fa-solid fa-user"></i></div>
+                <p>NLHD</p>
+            </div>
+            <nav class="sidebar-nav">
+                    <ul class="list-nav">
+                        <li>
+                            <a href="#" class="nav-link">
+                                <span class="nav-label">Hợp đồng</span>
+                            </a> 
+                        </li>  
+                        <li>
+                            <a href="#logoutBox" class="nav-link" id="logout-link">
+                            <span class="nav-label">Đăng xuất</span>
+                            </a> 
+                        </li>
+                    </ul>
+                </nav>
+
+        </div>
+    
+        <div class="wrapper-right">
+            <div class="top">
+                <div class="search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Tìm kiếm" maxlength="100">
+                </div>
+            </div>
+           
+
+            <!-- Danh sách hợp đồng  -->
+            <div class="content">
+                <p>Danh sách hợp đồng</p>
+            </div>
+            <table >
+                <thead class="contracs-table">
+                    <tr>
+                        <th style="width: 40%;">Tên</th>
+                        <th style="width: 40%;">Trạng thái</th>
+                        <th style="width: 20%;">Chỉnh sửa</th>
+                    </tr>
+                </thead>
+                <tbody id="contracsList" class="contracs-list">
+                    <tr>
+                        <td><span class="cus-name">Nguyễn Văn A</span></td>
+                        <td>Đang hoạt động</td>
+                        <td>
+                            <button class="edit-btn" onclick="openEditFormContracs()">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="cus-name">Nguyễn Văn A</span></td>
+                        <td>Đang hoạt động</td>
+                        <td>
+                            <button class="edit-btn" onclick="openEditFormContracs()">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="cus-name">Nguyễn Văn A</span></td>
+                        <td>Đang hoạt động</td>
+                        <td>
+                            <button class="edit-btn" onclick="openEditFormContracs()">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+            <!-- Box chỉnh sửa hợp đồng  -->
+            <div id="editContracsBox" class="edit-contracs-box" style="display: none;">
+                <div class="form-edit-contracs">
+                    <p>Thông tin hợp đồng</p>
+                    <input type="text" placeholder="Tên hợp đồng" required>
+                    <input type="text" placeholder="ID" required>
+                    <input type="text" placeholder="Họ và tên" required>
+                    <input type="text" placeholder="Giới tính" required>
+                    <input type="text" placeholder="Ngày sinh" required>
+                    <input type="text" placeholder="Nơi công tác" required>
+                    <input type="text" placeholder="Địa chỉ thường trú" required>
+                    <input type="text" placeholder="Số điện thoại" required>
+                    <input type="text" placeholder="Ngày bắt đầu" required>
+                    <input type="text" placeholder="Ngày kết thúc" required>
+                    <input type="text" placeholder="Tiền sử bệnh (nếu có)" required>
+                    <input type="text" placeholder="Người tạo" required>
+                    <input type="text" placeholder="Ngày tạo" required>
+                    <select required>
+                        <option value="">Trạng thái</option>
+                        <option value="">Đã thanh toán</option>
+                        <option value="">Chưa thanh toán</option>
+                    </select>
+                    <div class="form-buttons">
+                        <button type="submit">Cập nhật</button>
+                        <button type="button" onclick="closeEditFormContracs()">Hủy</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Box thêm mới hợp đồng  -->
+            <div class="add">
+                <button onclick="openAddContracsForm()">Thêm</button>
+            </div>
+            <div id="addContracsForm" class="add-contracs-box" style="display: none;">
+                <div class="form-add-contracs">
+                    <p>Thêm mới hợp đồng</p>
+                    <input type="text" placeholder="Tên hợp đồng" required>
+                    <input type="text" placeholder="Nhập ID" required>
+                    <input type="text" placeholder="Họ và tên" required>
+                    <input type="text" placeholder="Giới tính" required>
+                    <input type="text" placeholder="Ngày sinh" required>
+                    <input type="text" placeholder="Nơi công tác" required>
+                    <input type="text" placeholder="Địa chỉ thường trú" required>
+                    <input type="text" placeholder="Số điện thoại" required>
+                    <input type="text" placeholder="Ngày bắt đầu" required>
+                    <input type="text" placeholder="Ngày kết thúc" required>
+                    <input type="text" placeholder="Tiền sử bệnh (nếu có)" required>
+                    <div class="form-buttons">
+                        <button type="submit">Thêm</button>
+                        <button type="button" onclick="closeAddContracsForm()">Hủy</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Box xác nhận -->
+        <div id="logoutBox" class="logout" style="display: none;">
+            <div class="logout-content">
+                <p>Bạn có chắc muốn đăng xuất không?</p>
+                <button onclick="logout()">Có</button>
+                <button onclick="closeLogoutBox()">Không</button>
+            </div>
+        </div>
+    </div>
+    <script src="./assets/js/admin_add.js"></script>
+    <script src="./assets/js/dangxuat.js"></script>
+</body>
+</html> 

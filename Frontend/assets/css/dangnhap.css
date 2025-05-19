@@ -1,0 +1,53 @@
+img{
+    display: block; 
+    margin: 20px auto;
+}
+
+.wrapper{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    height: 300px;
+    width: 410px;
+    /* align-items: center; */
+    flex-direction: column;
+    /* background-color: #D2F2FF; */
+    margin: 20px auto;
+}
+
+input{
+    display: block;
+    width: 400px;
+    height: 20px; 
+    color: #000000;
+    margin-bottom: 8px; 
+    padding: 5px;
+    background-color: #D2F2FF;
+    border: none;
+}
+
+button {
+    height: 30px;
+    width: 100px;
+    background-color: #215D77;
+    color:white;
+    border: none;
+    margin: 30px auto;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between; /* đẩy 2 link ra 2 bên */
+    width: 100%;
+    font-size: 13px;
+  }
+
+.link{
+     color: #215D77;           /*   màu chữ mặc định */
+    text-decoration: none;       /* bỏ gạch chân mặc định */
+    font-size: 13px;
+}
+.link:hover {
+    color: #FB7A38;              /* đổi màu khi hover */
+    text-decoration: underline;  /* gạch chân khi hover */
+}

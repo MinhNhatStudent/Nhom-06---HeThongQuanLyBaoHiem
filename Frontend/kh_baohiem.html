@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khách hàng</title>
+
+    <link rel="stylesheet" href="./assets/css/kh_baohiem.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="wrapper-left">
+            <div class="avatar">
+                <div class="circle"><i class="fa-solid fa-user"></i></div>
+                <p>Khách hàng</p>
+            </div>
+            <nav class="sidebar-nav">
+                    <ul class="list-nav">
+                        <li>
+                            <a href="kh_thongtin.html" class="nav-link">
+                                <span class="nav-label">Thông tin cá nhân</span>
+                            </a> 
+                        </li>  
+                        <li>
+                            <a href="kh_baohiem.html" class="nav-link">
+                                <span class="nav-label">Bảo hiểm</span>
+                            </a> 
+                        </li> 
+                        <li>
+                            <a href="kh_doimatkhau.html" class="nav-link">
+                                <span class="nav-label">Đổi mật khẩu</span>
+                            </a> 
+                        </li> 
+                        <li>
+                            <a href="#logoutBox" class="nav-link" id="logout-link">
+                            <span class="nav-label">Đăng xuất</span>
+                            </a> 
+                        </li>
+                    </ul>
+                </nav>
+
+        </div>
+    
+        <div class="wrapper-right">
+            
+            <div class="content">
+                <p>Danh sách bảo hiểm</p>
+            </div>
+            
+            
+        </div>
+        
+        <!-- Box xác nhận -->
+        <div id="logoutBox" class="logout" style="display: none;">
+            <div class="logout-content">
+                <p>Bạn có chắc muốn đăng xuất không?</p>
+                <button onclick="logout()">Có</button>
+                <button onclick="closeLogoutBox()">Không</button>
+            </div>
+        </div>
+    </div>
+    <script src="./assets/js/dangxuat.js"></script>
+</body>
+</html> 

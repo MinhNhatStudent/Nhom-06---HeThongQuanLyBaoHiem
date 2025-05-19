@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giám sát hợp đồng</title>
+
+    <link rel="stylesheet" href="./assets/css/giamsat.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="wrapper-left">
+            <div class="avatar">
+                <div class="circle"><i class="fa-solid fa-user"></i></div>
+                <p>Giám sát</p>
+            </div>
+            <nav class="sidebar-nav">
+                    <ul class="list-nav">
+                        <li>
+                            <a href="#" class="nav-link">
+                                <span class="nav-label">Hợp đồng</span>
+                            </a> 
+                        </li>  
+                        <li>
+                            <a href="#logoutBox" class="nav-link" id="logout-link">
+                            <span class="nav-label">Đăng xuất</span>
+                            </a> 
+                        </li>
+                    </ul>
+                </nav>
+
+        </div>
+    
+        <div class="wrapper-right">
+            <div class="top">
+                <div class="search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Tìm kiếm" maxlength="100">
+                </div>
+            </div>
+            
+
+            <!-- Danh sách hợp đồng -->
+            <div class="content">
+                <p>Danh sách hợp đồng</p>
+            </div>
+            <table>
+                <thead class="contracs-table">
+                    <tr>
+                        <th style="width: 40%;">Tên</th>
+                        <th style="width: 40%;">Trạng thái</th>
+                        <th style="width: 20%;">Xem chi tiết</th>
+                    </tr>
+                </thead>
+                <tbody id="giamsat_contracsList" class="contracs-list">
+                    <tr>
+                        <td><span class="cus-name">Nguyễn Văn A</span></td>
+                        <td>Đang hoạt động</td>
+                        <td>
+                            <button class="edit-btn" onclick="openFormCon()">
+                            <i class="fa-solid fa-eye"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="cus-name">Nguyễn Văn A</span></td>
+                        <td>Đang hoạt động</td>
+                        <td>
+                            <button class="edit-btn" onclick="openFormCon()">
+                            <i class="fa-solid fa-eye"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="cus-name">Nguyễn Văn A</span></td>
+                        <td>Đang hoạt động</td>
+                        <td>
+                            <button class="edit-btn" onclick="openFormCon()">
+                            <i class="fa-solid fa-eye"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+            <!-- Box xem chi tiết hợp đồng -->
+            <div id="detailContracsBox" class="detail-contracs-box" style="display: none;">
+                <div class="form-detail-contracs">
+                    <p>Thông tin hợp đồng</p>
+                    <div class="inf">
+                        <p>Tên hợp đồng: </p>
+                        <p>ID: </p>
+                        <p>Họ và tên: </p>
+                        <p>Giới tính: </p>
+                        <p>Ngày sinh: </p>
+                        <p>Nơi công tác: </p>
+                        <p>Địa chỉ thường trú: </p>
+                        <p>Số điện thoại: </p>
+                        <p>Ngày bắt đầu: </p>
+                        <p>Ngày kết thúc: </p>
+                        <p>Tiền sử bệnh (nếu có): </p>
+                        <p>Người tạo: </p>
+                        <p>Ngày tạo: </p>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" onclick="closeFormCon()">Hủy</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Box xem thông tin khách hàng -->
+            <div id="detailCusBox" class="detail-customer-box" style="display: none;">
+                <div class="form-detail-cus">
+                    <p>Thông tin khách hàng</p>
+                    <div class="inf">
+                        <p>ID: </p>
+                        <p>Họ và tên: </p>
+                        <p>Ngày sinh: </p>
+                        <p>Giới tính: </p>
+                        <p>Địa chỉ thường trú: </p>
+                        <p>Nơi công tác: </p>
+                        <p>Số điện thoại: </p>
+                        <p>Trạng thái: </p>
+                        <p>Tiền sử bệnh (nếu có): </p>
+                    </div>
+                    <div>
+                        <button type="button" onclick="closeDetailCus()">Đóng</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Box xác nhận -->
+        <div id="logoutBox" class="logout" style="display: none;">
+            <div class="logout-content">
+                <p>Bạn có chắc muốn đăng xuất không?</p>
+                <button onclick="logout()">Có</button>
+                <button onclick="closeLogoutBox()">Không</button>
+            </div>
+        </div>
+    </div>
+    <script src="./assets/js/admin_add.js"></script>
+    <script src="./assets/js/dangxuat.js"></script>
+</body>
+</html> 

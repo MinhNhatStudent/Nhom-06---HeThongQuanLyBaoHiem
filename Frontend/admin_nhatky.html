@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+
+    <link rel="stylesheet" href="./assets/css/admin_nhatky.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="wrapper-left">
+            <div class="avatar">
+                <div class="circle"><i class="fa-solid fa-user"></i></div>
+                <p>Admin</p>
+            </div>
+            <nav class="sidebar-nav">
+                    <ul class="list-nav">
+                        <li>
+                            <a href="admin_nhanvien.html" class="nav-link">
+                                <span class="nav-label">Nhân viên</span>
+                            </a> 
+                        </li>  
+                        <li>
+                            <a href="admin_khachhang.html" class="nav-link">
+                                <span class="nav-label">Khách hàng</span>
+                            </a> 
+                        </li> 
+                        <li>
+                            <a href="admin_nhatky.html" class="nav-link">
+                                <span class="nav-label">Nhật ký hoạt động</span>
+                            </a> 
+                        </li> 
+                        <li>
+                            <a href="#logoutBox" class="nav-link" id="logout-link">
+                            <span class="nav-label">Đăng xuất</span>
+                            </a> 
+                        </li>
+                    </ul>
+                </nav>
+        </div>
+    
+        <div class="wrapper-right">
+  
+            <div class="content">
+                <p>Nhật ký hoạt động</p>
+            </div>
+            
+            <div class="bot-header"> 
+                <p>Tên</p>
+                <p>Ngày</p>
+                <p>Hành động</p>
+            </div>
+        </div>
+        
+        <!-- Box xác nhận -->
+        <div id="logoutBox" class="logout" style="display: none;">
+            <div class="logout-content">
+                <p>Bạn có chắc muốn đăng xuất không?</p>
+                <button onclick="logout()">Có</button>
+                <button onclick="closeLogoutBox()">Không</button>
+            </div>
+        </div>
+    </div>
+    <script src="./assets/js/dangxuat.js"></script>
+</body>
+</html> 
