@@ -1,9 +1,9 @@
 -- Thêm ở đầu file để tránh lỗi khi chạy lại nhiều lần
-DROP DATABASE IF EXISTS insurance_management2;
+DROP DATABASE IF EXISTS insurance_management;
 
 -- Tạo cơ sở dữ liệu
-CREATE DATABASE insurance_management2;
-USE insurance_management2;
+CREATE DATABASE insurance_management;
+USE insurance_management;
 
 -- Bảng insurance_types: Lưu các loại bảo hiểm
 CREATE TABLE insurance_types (
