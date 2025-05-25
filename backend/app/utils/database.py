@@ -45,6 +45,9 @@ def execute_procedure(procedure_name, params=None):
         for result in cursor.stored_results():
             results.append(result.fetchall())
         
+        # COMMIT THE TRANSACTION to save changes to the database
+        connection.commit()
+        
         # If there's only one result set, return it directly
         if len(results) == 1:
             return results[0]
@@ -52,6 +55,9 @@ def execute_procedure(procedure_name, params=None):
         
     except mysql.connector.Error as err:
         print(f"Error executing stored procedure {procedure_name}: {err}")
+        # Rollback in case of error
+        if connection:
+            connection.rollback()
         raise
     finally:
         if cursor:

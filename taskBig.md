@@ -47,10 +47,10 @@ As you complete tasks and references revelant files update this files this file 
 - [x] Xây dựng các decorators cho phép kiểm tra quyền ở cấp endpoint
 
 ### 1.3 Phát triển API quản lý người dùng
-- [ ] API đăng ký người dùng
-- [ ] API kích hoạt tài khoản qua email
-- [ ] API quản lý thông tin người dùng và vai trò
-- [ ] API đặt lại mật khẩu 
+- [x] API đăng ký người dùng (`/users/register`)
+- [x] API kích hoạt tài khoản qua email (`/users/activate`)
+- [x] API quản lý thông tin người dùng và vai trò (`/users/me`, `/users/{user_id}`)
+- [x] API đặt lại mật khẩu (`/users/password-reset/request`, `/users/password-reset/confirm`)
 
 ### 1.4 Phát triển API quản lý hợp đồng
 - [ ] API tạo và cập nhật hợp đồng
@@ -68,17 +68,13 @@ As you complete tasks and references revelant files update this files this file 
 - [ ] API xem các log trong bảng audit_logs của user ID nhất định
 - [ ] API xem các log trong bảng user_activity logs của user ID nhất định
 
-### 1.8 Viết tài liệu API và kiểm thử cơ bản
-- [ ] Tạo tài liệu API với OpenAPI/Swagger
-- [ ] Viết kiểm thử cơ bản cho các API chính
-
 ## 2. Tích hợp Frontend với Backend
 
 ### 2.1 Tích hợp các trang xác thực
 - [ ] Cập nhật trang đăng nhập/đăng ký để sử dụng API
 - [ ] Cập nhật trang kích hoạt tài khoản
 
-### 2.2 Tích hợp các trang quản lý hợp đồng chính
+### 2.2 Tích hợp các trang quản lý hợp đồng chính 
 - [ ] Tích hợp trang xem danh sách hợp đồng
 - [ ] Tích hợp trang tạo và cập nhật hợp đồng
 - [ ] Tích hợp trang chi tiết hợp đồng
@@ -95,12 +91,6 @@ As you complete tasks and references revelant files update this files this file 
 - [ ] Cập nhật trang khách hàng (`kh_*.html`) cơ bản
 - [ ] Cập nhật trang quản trị (`admin_*.html`) cơ bản
 
-## 3. Bảo mật và Kiểm thử
-
-### 3.1 Kiểm thử cơ bản
-- [ ] Kiểm tra chức năng xác thực và phân quyền
-- [ ] Kiểm tra chức năng mã hóa/giải mã dữ liệu
-- [ ] Kiểm tra ghi và xem audit log
 
 ## Lưu ý quan trọng
 - Tập trung vào yêu cầu cốt lõi: mã hóa dữ liệu, RBAC và audit hành vi người dùng

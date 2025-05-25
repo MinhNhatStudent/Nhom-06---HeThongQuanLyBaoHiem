@@ -40,8 +40,6 @@ BEGIN
     -- Xóa các phiên cũ của người dùng (tùy chọn - nếu muốn chỉ cho phép 1 phiên)
     -- UPDATE phienlamviec SET is_active = FALSE WHERE user_id = p_user_id AND is_active = TRUE;
     
-
-    
     -- Thêm phiên mới
     INSERT INTO phienlamviec (session_id, user_id, ip_address)
     VALUES (p_session_id, p_user_id, p_ip_address);

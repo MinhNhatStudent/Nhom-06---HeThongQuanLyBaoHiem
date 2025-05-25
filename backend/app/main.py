@@ -96,9 +96,11 @@ async def test_logout():
 
 # Import and include routers
 from .routes.auth import router as auth_router
+from .routes.users import router as users_router
 
 # Include routers in application
 app.include_router(auth_router)
+app.include_router(users_router)
 
 # Initialize scheduled tasks
 @app.on_event("startup")
