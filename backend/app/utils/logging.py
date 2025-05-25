@@ -49,43 +49,65 @@ def log_activity(user_id: int, activity_type: str, description: str, ip_address:
 
 class AuditMiddleware:
     """
-    Middleware to audit API requests
+    Middleware to audit API requests using ASGI interface
     """
-    async def __call__(self, request: Request, call_next):
+    def __init__(self, app):
+        # Store the ASGI app instance
+        self.app = app
+        
+    async def __call__(self, scope, receive, send):
+        # Check if this is an HTTP request (ignore WebSocket and lifespan)
+        if scope["type"] != "http":
+            await self.app(scope, receive, send)
+            return
+            
         # Get start time
         start_time = datetime.now()
         
-        # Get client IP
-        client_ip = request.client.host if request.client else None
-        
-        # Track request path and method
-        path = request.url.path
-        method = request.method
-        
-        # Process the request
-        response = await call_next(request)
-        
-        # Calculate request duration
-        duration = (datetime.now() - start_time).total_seconds()
-        
-        # Log request details (skip health checks and other routine paths)
-        if not path.startswith(("/docs", "/redoc", "/openapi.json", "/favicon.ico")):
-            # Get user ID from request state if authenticated
-            user_id = getattr(request.state, "user_id", None)
+        # Extract request info from scope
+        method = scope.get("method", "UNKNOWN")
+        path = scope.get("path", "UNKNOWN")
+        client_ip = None
+        if "client" in scope and scope["client"]:
+            client_ip = scope["client"][0]  # Get client IP
             
-            if user_id:
-                log_activity(
-                    user_id=user_id,
-                    activity_type="api_request",
-                    description=f"{method} {path}",
-                    ip_address=client_ip,
-                    details={
-                        "status_code": response.status_code,
-                        "duration_seconds": duration
-                    }
-                )
-            else:
-                # Anonymous request
-                logger.info(f"Anonymous: {method} {path} - Status: {response.status_code} - Duration: {duration:.3f}s")
+        # Create a send wrapper to capture response status
+        status_code = [200]  # Default to 200 OK
         
-        return response
+        async def send_wrapper(message):
+            if message["type"] == "http.response.start":
+                # Capture the status code
+                status_code[0] = message["status"]
+            await send(message)
+            
+        # Process the request
+        try:
+            await self.app(scope, receive, send_wrapper)
+            
+            # Calculate request duration
+            duration = (datetime.now() - start_time).total_seconds()
+            
+            # Log request details (skip health checks and other routine paths)
+            if not path.startswith(("/docs", "/redoc", "/openapi.json", "/favicon.ico")):
+                # Try to get user_id from state (if available)
+                user_id = None
+                if "state" in scope and hasattr(scope["state"], "user_id"):
+                    user_id = scope["state"].user_id
+                
+                if user_id:
+                    log_activity(
+                        user_id=user_id,
+                        activity_type="api_request",
+                        description=f"{method} {path}",
+                        ip_address=client_ip,
+                        details={
+                            "status_code": status_code[0],
+                            "duration_seconds": duration
+                        }
+                    )
+                else:
+                    # Anonymous request
+                    logger.info(f"Anonymous: {method} {path} - Status: {status_code[0]} - Duration: {duration:.3f}s")
+        except Exception as e:
+            logger.error(f"Error in audit middleware: {str(e)}")
+            raise  # Re-raise the exception

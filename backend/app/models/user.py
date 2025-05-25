@@ -68,3 +68,4 @@ class TokenData(BaseModel):
     sub: str  # User email or ID
     exp: int  # Expiration time
     vai_tro: str  # User role
+    session_id: Optional[str] = None  # Session ID for session management
