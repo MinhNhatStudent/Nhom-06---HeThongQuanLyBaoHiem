@@ -107,12 +107,20 @@ async def get_token_data(token: str = Depends(oauth2_scheme)) -> TokenData:
         
         # Validate session with database - with improved resilience
         if session_id:
-            try:
-                # Try to validate existing session
+            try:                # Try to validate existing session
                 result = execute_procedure("fastapi_validate_session", [session_id])
                 
-                # Check if session is valid
-                session_valid = result and len(result) > 0 and result[0].get('result', {}).get('valid', False)
+                # Check if session is valid - parse JSON result properly
+                if result and len(result) > 0:
+                    session_result_json = result[0].get('result', '{}')
+                    if isinstance(session_result_json, str):
+                        import json
+                        session_result = json.loads(session_result_json)
+                    else:
+                        session_result = session_result_json
+                    session_valid = session_result.get('valid', False)
+                else:
+                    session_valid = False
                 
                 # ENHANCED: If validation failed, try to create or fix the session
                 if not session_valid:
@@ -163,10 +171,20 @@ async def get_token_data(token: str = Depends(oauth2_scheme)) -> TokenData:
                     
                     cursor.close()
                     conn.close()
-                    
-                    # Re-validate the session
+                      # Re-validate the session
                     result = execute_procedure("fastapi_validate_session", [session_id])
-                    session_valid = result and len(result) > 0 and result[0].get('result', {}).get('valid', False)
+                    
+                    # Parse the JSON result properly
+                    if result and len(result) > 0:
+                        session_result_json = result[0].get('result', '{}')
+                        if isinstance(session_result_json, str):
+                            import json
+                            session_result = json.loads(session_result_json)
+                        else:
+                            session_result = session_result_json
+                        session_valid = session_result.get('valid', False)
+                    else:
+                        session_valid = False
                 
                 # ENHANCED: In development mode, we'll allow invalid sessions
                 if not session_valid and settings.debug:

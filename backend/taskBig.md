@@ -53,19 +53,19 @@ As you complete tasks and references revelant files update this files this file 
 - [x] API đặt lại mật khẩu (`/users/password-reset/request`, `/users/password-reset/confirm`)
 
 ### 1.4 Phát triển API quản lý hợp đồng theo id, vai trò người dùng
-- [] API thêm hợp đồng và chi tiết hợp đồng
-- [] API tạo người dùng insured_people dựa trên chi tiết hợp đồng (không active)
-- [] API xóa hợp đồng và chi tiết hợp đồng
-- [] API sửa hợp đồng và chi tiết hợp đồng
+- [x] API xem danh sách hợp đồng
+- [x] API xem chi tiết hợp đồng
+- [x] API thêm hợp đồng và chi tiết hợp đồng
+- [x] API tạo người dùng insured_people dựa trên chi tiết hợp đồng (không active)
+- [x] API xóa hợp đồng và chi tiết hợp đồng
+- [x] API sửa hợp đồng và chi tiết hợp đồng
 
 ### 1.5 Phát triển API quản lý thanh toán
 - [ ] API tạo kỳ thanh toán mới
 - [ ] API cập nhật trạng thái thanh toán
-- [ ] API xem lịch sử thanh toán
+- [ ] API xem lịch sử thanh toán của một insured_person
+- [ ] API xem danh sách các hợp đồng theo trạng thái thanh toán
 
-### 1.7 Triển khai audit log
-- [ ] API xem các log trong bảng audit_logs của user ID nhất định
-- [ ] API xem các log trong bảng user_activity logs của user ID nhất định
 
 ## 2. Tích hợp Frontend với Backend
 
@@ -80,6 +80,7 @@ As you complete tasks and references revelant files update this files this file 
 - [ ] Thêm tính năng quản lý trạng thái hợp đồng
 
 ### 2.3 Tích hợp các trang quản lý thanh toán chính
+- [ ] Tích hợp trang xem danh sách hợp đồng theo trạng thái thanh toán
 - [ ] Tích hợp trang xem lịch sử thanh toán
 - [ ] Tích hợp trang cập nhật trạng thái thanh toán
 

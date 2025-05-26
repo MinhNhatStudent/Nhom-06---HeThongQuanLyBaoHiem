@@ -46,9 +46,13 @@ class SessionManager:
                     status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
                     detail="Session validation failed",
                 )
-            
-            # Parse result
-            session_result = result[0].get('result', {})
+              # Parse result - the stored procedure returns JSON as a string
+            session_result_json = result[0].get('result', '{}')
+            if isinstance(session_result_json, str):
+                import json
+                session_result = json.loads(session_result_json)
+            else:
+                session_result = session_result_json
             
             if not session_result.get('valid', False):
                 raise HTTPException(

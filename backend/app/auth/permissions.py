@@ -176,3 +176,23 @@ def requires_role(required_roles: Union[UserRole, List[UserRole]]):
         return wrapper
     
     return decorator
+
+def require_authenticated(token_data: TokenData = Depends(get_token_data)) -> TokenData:
+    """
+    Dependency to ensure user is authenticated
+    
+    Args:
+        token_data: Token data from JWT
+        
+    Returns:
+        Token data if authenticated
+        
+    Raises:
+        HTTPException: If user is not authenticated
+    """
+    if not token_data:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Not authenticated"
+        )
+    return token_data

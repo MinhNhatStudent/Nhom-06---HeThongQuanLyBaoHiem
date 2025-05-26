@@ -1,0 +1,93 @@
+
+Product Requirements Document (PRD)
+Hệ thống Quản lý Bảo hiểm
+
+1. Tổng quan sản phẩm
+1.1 Mục đích
+Hệ thống quản lý bảo hiểm được thiết kế để hỗ trợ việc quản lý hợp đồng bảo hiểm, với các tính năng bảo mật cao, mã hóa dữ liệu nhạy cảm và phân quyền nghiêm ngặt cho các đối tượng sử dụng khác nhau.
+Hệ thống dược xây dựng để qua môn Bảo mật cơ sở dữ liệu, chỉ đòi hỏi việc mã hóa, rbac và audit hành vi người dùng, không đòi hỏi xây dựng cho 10 người trở lên sử dụng, không plan để mở rộng và bảo trì trong tương lai
+Người viết là một sinh viên
+
+1.2 Đối tượng sử dụng
+- Người lập hợp đồng bảo hiểm: Tạo và quản lý hợp đồng bảo hiểm cho khách hàng
+- Người được bảo hiểm: Xem thông tin cá nhân và theo dõi quá trình bảo hiểm
+- Bộ phận kế toán: Quản lý tài chính cho các loại bảo hiểm được phân công
+- Bộ phận giám sát: Theo dõi và giám sát thông tin cho loại bảo hiểm được phân công
+- Quản trị viên: Quản lý người dùng và cấu hình hệ thống
+
+2. Yêu cầu chức năng
+2.1 Quản lý người dùng
+- Đăng ký, đăng nhập, đăng xuất
+- Phân quyền theo vai trò
+- Quản lý thông tin cá nhân
+- Xác thực tạo tài khoản thông qua email với người được bảo hiểm, sau khi người được bảo hiểm click đường link thì về trang đổi mật khẩu, người dùng chuyển hướng về trang đổi mật khẩu và active tài khoản
+
+2.2 Quản lý hợp đồng
+- Tạo hợp đồng mới
+- Tra cứu, xem chi tiết hợp đồng
+- Cập nhật thông tin hợp đồng
+- Quản lý trạng thái hợp đồng (Đang xử lý, Có hiệu lực, Hết hiệu lực, Hủy bỏ)
+
+2.3 Quản lý thanh toán
+- Ghi nhận các kỳ thanh toán
+- Tra cứu lịch sử thanh toán
+- Theo dõi trạng thái thanh toán
+
+2.4 Bảo mật dữ liệu
+- Mã hóa thông tin cá nhân nhạy cảm
+- Quản lý khóa mã hóa
+- Giải mã dữ liệu theo quyền
+
+2.5 Phân quyền truy cập
+- Kiểm soát quyền truy cập theo vai trò (RBAC)
+- Giới hạn quyền xem, sửa thông tin hợp đồng
+- Views riêng cho từng vai trò
+
+2.6 Audit và ghi nhật ký
+- Ghi lại tất cả thao tác quan trọng
+- Theo dõi thay đổi dữ liệu
+
+3. Giới hạn truy cập theo vai trò
+3.1 Người lập hợp đồng
+- Chỉ được xem và chỉnh sửa các hợp đồng do họ tạo ra
+- Có quyền tạo mới hợp đồng và cập nhật thông tin cho người được bảo hiểm
+
+3.2 Người được bảo hiểm
+- Chỉ xem thông tin liên quan đến cá nhân
+- Theo dõi quá trình đóng bảo hiểm, giá trị bảo hiểm
+- Không được chỉnh sửa thông tin
+
+3.3 Bộ phận kế toán
+- Chỉ xem thông tin các hợp đồng thuộc loại bảo hiểm được phân công
+- Có quyền kết xuất thông tin kế toán
+- Quản lý thanh toán cho các hợp đồng được phân công
+
+3.4 Bộ phận giám sát
+- Chỉ giám sát một loại bảo hiểm được phân công
+- Xem thông tin liên quan nhưng không được chỉnh sửa
+
+4. Yêu cầu kỹ thuật
+4.1 Công nghệ sử dụng
+- Backend: FastAPI 
+- Database: MySQL
+- Đảm bảo các stored procedures hỗ trợ tốt cho RESTful API
+
+4.2 Bảo mật dữ liệu
+- Sử dụng mã hóa AES cho dữ liệu nhạy cảm
+- Quản lý khóa mã hóa an toàn
+- Xác thực và phân quyền chặt chẽ
+
+4.3 Phiên làm việc
+- Ghi lại phiên làm việc của người dùng và hành động gần nhất 
+- Log lại hành vi thay đổi dữ liệu của người dùng
+
+
+5. Cập nhật cần thực hiện
+5.1 Tích hợp với FastAPI
+- Điều chỉnh các stored procedures để tương thích với FastAPI
+
+5.2 Bổ sung các tính năng
+- Thêm trạng thái hợp đồng
+- Thêm trạng thái thanh toán
+- Bổ sung địa chỉ tạm trú và địa chỉ liên lạc
+- Thêm trường giá trị bảo hiểm
