@@ -53,10 +53,10 @@ As you complete tasks and references revelant files update this files this file 
 - [x] API đặt lại mật khẩu (`/users/password-reset/request`, `/users/password-reset/confirm`)
 
 ### 1.4 Phát triển API quản lý hợp đồng theo id, vai trò người dùng
-- [ ] API tạo và cập nhật hợp đồng
-- [ ] API xem danh sách và chi tiết hợp đồng
-- [ ] API quản lý trạng thái hợp đồng
-- [ ] API tính toán và cập nhật giá trị bảo hiểm
+- [] API thêm hợp đồng và chi tiết hợp đồng
+- [] API tạo người dùng insured_people dựa trên chi tiết hợp đồng (không active)
+- [] API xóa hợp đồng và chi tiết hợp đồng
+- [] API sửa hợp đồng và chi tiết hợp đồng
 
 ### 1.5 Phát triển API quản lý thanh toán
 - [ ] API tạo kỳ thanh toán mới
